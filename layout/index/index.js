@@ -5,7 +5,20 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        swiperData: [
+            {
+                img: "/assets/images/index/不能说的秘密.jpg",
+                title: "不能说的秘密"
+            },
+            {
+                img: "/assets/images/index/七里香.jpg",
+                title: "七里香"
+            },
+            {
+                img: "/assets/images/index/晴天.jpg",
+                title: "晴天"
+            },
+        ]
     },
 
     /**
