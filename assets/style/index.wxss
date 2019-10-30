@@ -1,3 +1,6 @@
-view {
+@import "./iconfont.wxss";
+view,
+swiper,
+swiper-item {
     box-sizing: border-box;
 }

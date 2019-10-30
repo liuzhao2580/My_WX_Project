@@ -2,12 +2,63 @@
 <view class="index-box">
     <!-- 轮播图 -->
     <view class="swiper-box">
-        <swiper indicator-dots="true" autoplay="true" indicator-color="#fff"  indicator-active-color="#c20c0c">
-            <block wx:for="{{swiperData}}"  wx:key="item.title">
-                <swiper-item >
+        <swiper indicator-dots="true" autoplay="true" indicator-color="#fff"  indicator-active-color="#c20c0c" class="swiper" circular="true">
+            <block wx:for="{{swiperData}}"  wx:key="{{item.title}}">
+                <swiper-item class="swiper-item" >
                     <image src="{{item.img}}" class="slide-image" />
                 </swiper-item>
             </block>
         </swiper>
     </view>
+    <!-- 导航栏 -->
+    <view class="navbar-box">
+        <view wx:for="{{navBarData}}" class="navber-item" wx:key="{{item.title}}" >
+            <image src="{{item.img}}"></image>
+            <text>{{item.title}}</text>
+        </view>
+    </view>
+    <!-- 推荐歌单 -->
+    <view class="recommand-box">
+        <view class="title">
+            <text class="recommand">推荐歌单</text>
+            <text class="more">歌单广场</text>
+        </view>
+        <view class="recommand-content">
+            <view class="case" wx:for="{{recommandData}}" wx:key="{{item.title}}">
+                <image src="{{item.img}}" lazy-load="true"></image>
+                <text>{{item.title}}</text>
+                <view class="content">{{item.content}}</view>
+                <view class="play-num">
+                    <i class="iconfont icon-iconfontttpodicon" />
+                    <text>{{item.playNum}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 播放器 -->
+    <view class="play-video">
+        <view class="player-img">
+            <image src="{{playData.playerImg}}"></image>
+        </view>
+        <view class="player-info">
+            <view class="playerName">{{playData.playerName}}</view>
+            <view class="songer">{{playData.songer}}</view>
+        </view>
+        <view class="play-operation">
+            <view class="operation-previous">
+                <i class="iconfont icon-icon-2" />
+            </view>
+            <view class="operation-stop">
+                <i class="iconfont icon-icon-" />
+            </view>
+            <view class="operation-next">
+                <i class="iconfont icon-icon-1" />
+            </view>
+            <view class="play-list">
+                <i class="iconfont icon-liebiao" />
+            </view>
+        </view>
+    </view>
+    <!-- 加载 -->
+    <loading isHidden="{{loading}}"/>
 </view>

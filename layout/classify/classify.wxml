@@ -1,2 +1,4 @@
 <!--layout/classify/classify.wxml-->
-<text>layout/classify/classify.wxml</text>
+<view class="classify-box">
+    <loading isHidden="{{loading}}"/>
+</view>

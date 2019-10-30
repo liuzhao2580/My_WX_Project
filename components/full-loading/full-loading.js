@@ -1,10 +1,15 @@
-// layout/classify/classify.js
+// components/full-loading/full-loading.js
 Page({
+    onloadDown(e) {
+        // this.triggerEvent("loadDown")
+        console.log(55555)
+    },
+
     /**
      * 页面的初始数据
      */
     data: {
-        loading: true
+        loading: "/assets/images/loading.png"
     },
 
     /**
@@ -18,16 +23,14 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-        this.setData({
-            loading: false
-        })
+        
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        
+
     },
 
     /**
@@ -63,5 +66,17 @@ Page({
      */
     onShareAppMessage: function () {
 
+    }
+    
+})
+Component({
+    properties:{
+        isHidden: {
+            type: Boolean,
+            value: true
+        }
+    },
+    methods: {
+        
     }
 })

@@ -1,0 +1,3 @@
+<view wx:if="{{isHidden}}" class="loading-box">
+    <image src="/assets/images/loading.png" class="loading-img" ></image>
+</view>

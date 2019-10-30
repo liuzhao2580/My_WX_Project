@@ -1,0 +1,36 @@
+/* components/full-loading/full-loading.wxss */
+.loading-box {
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    opacity: 0.8;
+}
+.loading-img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    height: 50rpx;
+    width: 50rpx;
+    animation: loadingANI linear 1.8s infinite;
+}
+@keyframes loadingANI {
+    0% {
+        transform: rotate(0deg)
+    }
+    25% {
+        transform: rotate(90deg)
+    }
+    50% {
+        transform: rotate(180deg)
+    }
+    75% {
+        transform: rotate(270deg)
+    }
+    100% {
+        transform: rotate(360deg)
+    }
+}
