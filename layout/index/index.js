@@ -1,5 +1,6 @@
 // layout/index/index.js
 import configRequest from "../../utils/configRequest"
+const InnerAudioContext = wx.createInnerAudioContext()
 Page({
     
     /**
@@ -186,6 +187,8 @@ Page({
      */
     onShow: function () {
         
+        
+        InnerAudioContext.src = "http://m701.music.126.net/20191031184559/e6a59121c6cd1b14131149292baecde3/jdyyaac/025f/5359/035d/552d1d7661d35be4bc9b473d5e074729.m4a"
     },
 
     /**
@@ -223,56 +226,50 @@ Page({
 
     },
     playTap(e) {
-        const InnerAudioContext = wx.createInnerAudioContext()
         const nowOperation = e.currentTarget.dataset.title
-        InnerAudioContext.src = "http://m701.music.126.net/20191031153603/81520d8cdd366ef8bcdd256685148b24/jdyyaac/025f/5359/035d/552d1d7661d35be4bc9b473d5e074729.m4a"
         if (nowOperation == "stopORplay") {
             // 说明音乐还没播放
             if (!this.data.isPlay) {
-                console.log("start")
+                let errorFlag = false
                 // 监听音频播放事件
                 InnerAudioContext.onPlay(() => {
-                    let setIcon = this.data.playOperation
-                    setIcon[1].iconName = "iconfont icon-icon-3"
-                    wx.showToast({
-                        title: "开始播放",
-                        duration: 2000
-                    })
-                    this.setData({
-                        playOperation: setIcon,
-                        isPlay: true
-                    })
+                    if (!errorFlag) {
+                        let setIcon = this.data.playOperation
+                        setIcon[1].iconName = "iconfont icon-icon-3"
+                        wx.showToast({
+                            title: "开始播放",
+                            duration: 2000
+                        })
+                        this.setData({
+                            playOperation: setIcon,
+                            isPlay: true
+                        })
+                    }
                 })
                 InnerAudioContext.play()
                 // 监听音频播放错误事件
                 InnerAudioContext.onError((res) => {
+                    errorFlag = true
+                    console.log(3333)
                     console.log(res)
-                    console.log(res.errMsg)
-                    console.log(res.errCode)
                 })
             }
             // 说明音乐正在播放
             else if (this.data.isPlay) {
-                console.log("pause")
-                // // 取消监听音频播放事件
-                // InnerAudioContext.offPlay(() => {
-                //     console.log(9999)
-                // })
-                // // 监听音频暂停事件
-                // InnerAudioContext.onPause(() => {
-                //     console.log(2222)
-                //     wx.showToast({
-                //         title: "暂停播放",
-                //         duration: 2000
-                //     })
-                // })
-                
-                InnerAudioContext.stop()
-                // InnerAudioContext.onError((res) => {
-                //     console.log(res)
-                //     console.log(res.errMsg)
-                //     console.log(res.errCode)
-                // })
+                // 监听音频暂停事件
+                InnerAudioContext.onPause(() => {
+                    let setIcon = this.data.playOperation
+                    setIcon[1].iconName = "iconfont icon-icon-"
+                    wx.showToast({
+                        title: "暂停播放",
+                        duration: 2000
+                    })
+                    this.setData({
+                        playOperation: setIcon,
+                        isPlay: false
+                    })
+                })
+                InnerAudioContext.pause()
             }
         }
     }
