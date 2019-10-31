@@ -1,6 +1,7 @@
 // layout/index/index.js
+import configRequest from "../../utils/configRequest"
 Page({
-
+    
     /**
      * 页面的初始数据
      */
@@ -131,19 +132,44 @@ Page({
                 content: "2001年9月20日《范特西》唱片亚洲年度销售量170万张，大中华区年度销售亚军 ，累计销量780万。"
             }
         ],
+        // 播放器操作按钮
+        playOperation: [
+            {
+                className: "operation-previous",
+                iconName: "iconfont icon-icon-2",
+                title: "previous"
+            },
+            {
+                className: "operation-stop",
+                iconName: "iconfont icon-icon-",
+                title: "stopORplay"
+            },
+            {
+                className: "operation-next",
+                iconName: "iconfont icon-icon-1",
+                title: "next"
+            }, {
+                className: "play-list",
+                iconName: "iconfont icon-liebiao",
+                title: "list"
+            }
+        ],
         // 播放器
         playData: {
-            playerImg: "/assets/images/index/player-img.jpg",
+            playerImg: "https://p1.music.126.net/dHRFJJ9nfF_9YTxOz9UXUQ==/109951163901435148.jpg?param=130y130",
             playerName: "你说",
             songer: "枯木逢春"
-        }
+        },
+        // 是否正在播放
+        isPlay: false
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
+    
     onLoad: function (options) {
-
+        
     },
 
     /**
@@ -159,7 +185,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        
     },
 
     /**
@@ -195,5 +221,59 @@ Page({
      */
     onShareAppMessage: function () {
 
+    },
+    playTap(e) {
+        const InnerAudioContext = wx.createInnerAudioContext()
+        const nowOperation = e.currentTarget.dataset.title
+        InnerAudioContext.src = "http://m701.music.126.net/20191031153603/81520d8cdd366ef8bcdd256685148b24/jdyyaac/025f/5359/035d/552d1d7661d35be4bc9b473d5e074729.m4a"
+        if (nowOperation == "stopORplay") {
+            // 说明音乐还没播放
+            if (!this.data.isPlay) {
+                console.log("start")
+                // 监听音频播放事件
+                InnerAudioContext.onPlay(() => {
+                    let setIcon = this.data.playOperation
+                    setIcon[1].iconName = "iconfont icon-icon-3"
+                    wx.showToast({
+                        title: "开始播放",
+                        duration: 2000
+                    })
+                    this.setData({
+                        playOperation: setIcon,
+                        isPlay: true
+                    })
+                })
+                InnerAudioContext.play()
+                // 监听音频播放错误事件
+                InnerAudioContext.onError((res) => {
+                    console.log(res)
+                    console.log(res.errMsg)
+                    console.log(res.errCode)
+                })
+            }
+            // 说明音乐正在播放
+            else if (this.data.isPlay) {
+                console.log("pause")
+                // // 取消监听音频播放事件
+                // InnerAudioContext.offPlay(() => {
+                //     console.log(9999)
+                // })
+                // // 监听音频暂停事件
+                // InnerAudioContext.onPause(() => {
+                //     console.log(2222)
+                //     wx.showToast({
+                //         title: "暂停播放",
+                //         duration: 2000
+                //     })
+                // })
+                
+                InnerAudioContext.stop()
+                // InnerAudioContext.onError((res) => {
+                //     console.log(res)
+                //     console.log(res.errMsg)
+                //     console.log(res.errCode)
+                // })
+            }
+        }
     }
 })

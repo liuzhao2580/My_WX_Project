@@ -45,17 +45,8 @@
             <view class="songer">{{playData.songer}}</view>
         </view>
         <view class="play-operation">
-            <view class="operation-previous">
-                <i class="iconfont icon-icon-2" />
-            </view>
-            <view class="operation-stop">
-                <i class="iconfont icon-icon-" />
-            </view>
-            <view class="operation-next">
-                <i class="iconfont icon-icon-1" />
-            </view>
-            <view class="play-list">
-                <i class="iconfont icon-liebiao" />
+            <view wx:for="{{playOperation}}" wx:key="{{item.title}}" class="{{item.className}}" bindtap="playTap" data-title="{{item.title}}">
+                <i class="{{item.iconName}}" />
             </view>
         </view>
     </view>
