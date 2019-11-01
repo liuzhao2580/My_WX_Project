@@ -1,4 +1,26 @@
 <!--layout/classify/classify.wxml-->
 <view class="classify-box">
+    <!-- 左边的盒子 -->
+    <view class="classify-left">
+        <scroll-view scroll-y="true" class="left-scroll" scroll-with-animation="true">
+            <block wx:for="{{classifyData}}" wx:key="{{index}}">
+                <view class="{{index == currentClassify ? 'classify-detail classify-active' : 'classify-detail'}}" bindtap="classifyTab" data-currentIndex="{{index}}">
+                    <text>{{item.classifyName}}</text>
+                </view>
+            </block>
+        </scroll-view>
+    </view>
+    <!-- 右边的内容 -->
+    <view class="classify-right">
+        <!-- 轮播图 -->
+        <swiper indicator-dots="{{}}" autoplay="true">
+        <block wx:for="{{background}}" wx:key="item.title">
+            <swiper-item>
+                <view class="swiper-item {{item}}"></view>
+            </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <!-- 加载 -->
     <loading isHidden="{{loading}}"/>
 </view>

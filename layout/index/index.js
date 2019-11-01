@@ -21,7 +21,7 @@ Page({
             {
                 img: "/assets/images/index/qt.jpg",
                 title: "晴天"
-            },
+            }
         ],
         // 导航栏
         navBarData: [
