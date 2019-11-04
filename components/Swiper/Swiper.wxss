@@ -1,0 +1,11 @@
+.com-swiper {
+
+}
+.com-swiper-item {
+
+}
+.com-slide-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 10rpx;
+}

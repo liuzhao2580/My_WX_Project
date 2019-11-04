@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-      "loading": "/components/full-loading/full-loading"
+      "loading": "/components/full-loading/full-loading",
+      "com-swiper": "/components/Swiper/Swiper"
   }
 }

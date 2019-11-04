@@ -4,7 +4,7 @@
     <view class="classify-left">
         <scroll-view scroll-y="true" class="left-scroll" scroll-with-animation="true">
             <block wx:for="{{classifyData}}" wx:key="{{index}}">
-                <view class="{{index == currentClassify ? 'classify-detail classify-active' : 'classify-detail'}}" bindtap="classifyTab" data-currentIndex="{{index}}">
+                <view class="{{index == currentClassify ? 'classify-detail classify-active' : 'classify-detail'}}" bindtap="classifyTab" data-currentitem="{{[index,item.classifyName]}}">
                     <text>{{item.classifyName}}</text>
                 </view>
             </block>
@@ -12,15 +12,25 @@
     </view>
     <!-- 右边的内容 -->
     <view class="classify-right">
-        <!-- 轮播图 -->
-        <swiper indicator-dots="{{}}" autoplay="true">
-        <block wx:for="{{background}}" wx:key="item.title">
-            <swiper-item>
-                <view class="swiper-item {{item}}"></view>
-            </swiper-item>
-        </block>
-      </swiper>
+        <scroll-view scroll-y="true" class="classify-show">
+            <!-- 轮播图 -->
+            <com-swiper class="swiper-box" swiperData="{{classifyContent.swiperData}}" indicatorDots="{{classifyContent.swiperData.length > 1 ? true: false}}"/>
+            <!-- 分类详情 -->
+            <view class="classify-detail">
+                <block wx:for="{{classifyContent.detailContent}}" wx:key="index">
+                    <view class="detail-title">{{item.detailConTitle}}</view>
+                    <view class="detail-list">
+                        <block wx:for="{{item.detailConList}}" wx:for-index="listIndex" wx:for-item="listItem" wx:key="listIndex">
+                            <view class="list-box" bindtap="listTap" data-detaillist="{{listItem.songer}}">
+                                <image class="list-image" src="{{listItem.img}}"/>
+                                <text class="list-text">{{listItem.songer}}</text>
+                            </view>
+                        </block>
+                    </view>
+                </block>
+            </view>
+        </scroll-view>
     </view>
     <!-- 加载 -->
-    <loading isHidden="{{loading}}"/>
+    <loading isHidden="{{loading}}" />
 </view>

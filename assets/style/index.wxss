@@ -1,6 +1,8 @@
 @import "./iconfont.wxss";
 view,
 swiper,
-swiper-item {
+swiper-item,
+scroll-view,
+viedo {
     box-sizing: border-box;
 }

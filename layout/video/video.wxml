@@ -1,2 +1,20 @@
-<!--layout/video/video.wxml-->
-<text>layout/video/video.wxml</text>
+<!-- layout/video/video.wxml -->
+<view class="video-box">
+    <!-- 视频列表 -->
+    <view class="video-list">
+        <block wx:for="{{videoData}}" wx:key="{{index}}">
+            <view class="video-content">
+                <video id="myVideo" src="{{item.src}}" show-mute-btn="true" danmu-list="{{item.danmuList}}" danmu-btn="true" enable-danmu danmu-btn controls enable-play-gesture="true" />
+                <view class="video-state">
+                    <view class="video-title">{{item.videoInfo.title}}</view>
+                    <view class="video-songer">{{item.videoInfo.songer}}</view>
+                    <view class="video-other">
+                        <i class="iconfont .icon-shipin1 "></i>
+                        <text>{{item.videoInfo.playTime}}</text>
+                        <text>{{item.videoInfo.pubDate}}</text>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>

@@ -1,0 +1,8 @@
+<!-- 轮播图 -->
+<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}" class="com-swiper" circular="{{circular}}">
+    <block wx:for="{{swiperData}}" wx:key="index">
+        <swiper-item class="com-swiper-item" bindtap="swiperTap" data-swiperdata="{{item}}">
+            <image src="{{item.img}}" class="com-slide-image" />
+        </swiper-item>
+    </block>
+</swiper>
