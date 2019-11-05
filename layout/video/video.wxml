@@ -10,7 +10,7 @@
                     <view class="video-songer">{{item.videoInfo.songer}}</view>
                     <view class="video-other">
                         <i class="iconfont .icon-shipin1 "></i>
-                        <text>{{item.videoInfo.playTime}}</text>
+                        <text class="playTime">{{item.videoInfo.playTime}}</text>
                         <text>{{item.videoInfo.pubDate}}</text>
                     </view>
                 </view>
