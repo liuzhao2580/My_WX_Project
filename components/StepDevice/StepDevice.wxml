@@ -1,0 +1,8 @@
+<view class="stepDevice-box">
+    <!-- 减 按钮 -->
+    <text class="{{subtractBtnFlag ? 'subtract-btn forbid':'.subtract-btn'}}" bindtap="subtractBtn">-</text>
+    <!-- 数字显示框 -->
+    <view class="step-num">{{stepNum}}</view>
+    <!-- 加 按钮 -->
+    <text class="add-btn" bindtap="addBtn">+</text>
+</view>

@@ -1,0 +1,4 @@
+<view class="price-box" style="color: {{color}}">
+    <text class="price-icon">¥</text>
+    <text class="price-text">{{price}}</text>
+</view>

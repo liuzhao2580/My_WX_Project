@@ -1,0 +1,9 @@
+.price-box {
+
+}
+.price-box .price-icon {
+    font-size: 24rpx;
+}
+.price-box .price-text {
+    font-size: 32rpx;
+}

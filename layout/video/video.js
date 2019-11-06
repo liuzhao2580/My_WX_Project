@@ -9,7 +9,7 @@ Page({
         videoData: [
             {
                 // 视频地址
-                src: "http://211.161.127.14/vcloud1049.tc.qq.com/1049_M0135300000HdtXk2avwNV1001676254.f9844.mp4?vkey=713C30FCEAD7367F2DEBE081DADF65842A26ECDBD36A5868123BAB766626529B7469461FCFC2224FB99B8123E0A63C6E7B79AED96F9CF504D5ACB95380A744DE5FD124D784099D8568E2D9461B8AE5A032694DCE08906CE6",
+                src: "https://tb-video.bdstatic.com/tieba-smallvideo-transcode-cae/23556074_9e69a005b9924cf5e40747b876fe34dd_0_cae.mp4",
                 // 弹幕列表
                 danmuList: [
                     {

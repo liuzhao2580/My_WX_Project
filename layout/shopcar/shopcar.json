@@ -1,3 +1,9 @@
 {
-  "usingComponents": {}
+    "usingComponents": {
+        "mp-slideview": "/miniprogram_npm/weui-miniprogram/slideview/slideview",
+        "mp-icon": "/miniprogram_npm/weui-miniprogram/icon/icon",
+        "StepDevice": "/components/StepDevice/StepDevice",
+        "Price": "/components/Price/Price"
+    },
+    "navigationBarTitleText": "购物车"
 }
