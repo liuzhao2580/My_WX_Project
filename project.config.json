@@ -77,8 +77,16 @@
 				},
 				{
 					"id": -1,
-					"name": "layout/shopcar/shopcar",
-					"pathName": "layout/shopcar/shopcar",
+					"name": "layout/personal/personal",
+					"pathName": "layout/personal/personal",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/login/login",
+					"pathName": "pages/login/login",
+					"query": "",
 					"scene": null
 				}
 			]

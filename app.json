@@ -1,5 +1,6 @@
 {
     "pages": [
+        "pages/login/login",
         "layout/index/index",
         "layout/classify/classify",
         "layout/video/video",
