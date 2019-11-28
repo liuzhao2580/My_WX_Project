@@ -1,3 +1,4 @@
+import app from "../../utils/userInfo.js"
 // pages/login/login.js
 Page({
 
@@ -5,25 +6,32 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        is_login: true
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
+        
     },
-    // 登录
-    login_IN() {
-        console.log(222)
+    // 用户登录
+    getuserinfo(e) {
+        console.log(e)
+        const errMsg = e.detail.errMsg
+        console.log(errMsg)
+        if (errMsg == "getUserInfo:ok") {
+            this.setData({
+                is_login: true
+            })
+        }
     },
     /**
      * 生命周期函数--监听页面显示

@@ -1,12 +1,15 @@
 // layout/index/index.js
 import configRequest from "../../utils/configRequest"
 const InnerAudioContext = wx.createInnerAudioContext()
+const app = getApp()
 Page({
     
     /**
      * 页面的初始数据
      */
     data: {
+        // 用户是否登录
+        is_login: false,
         loading: true,
         // 轮播图
         swiperData: [
@@ -170,9 +173,26 @@ Page({
      */
     
     onLoad: function (options) {
-        
+        app.userInfoReadyCallback = res => {
+            console.log(res)
+            this.setData({
+                is_login: true
+            })
+        }
+        const userInfo = app.globalData.userInfo
+        console.log(userInfo)
+        if (userInfo) {
+            this.setData({
+                is_login: true
+            })
+        }
+        else {
+            wx.reLaunch({
+                url: '/pages/login/login'
+            })
+        }
     },
-
+    
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

@@ -1,9 +1,9 @@
 <!--layout/index/index.wxml-->
-<view class="index-box">
+<view class="index-box" wx:if="{{is_login}}">
     <!-- 轮播图 -->
     <view class="swiper-box">
         <swiper indicator-dots="true" autoplay="true" indicator-color="#fff"  indicator-active-color="#c20c0c" class="swiper" circular="true">
-            <block wx:for="{{swiperData}}"  wx:key="{{item.title}}">
+            <block wx:for="{{swiperData}}"  wx:key="index">
                 <swiper-item class="swiper-item" >
                     <image src="{{item.img}}" class="slide-image" />
                 </swiper-item>
@@ -12,7 +12,7 @@
     </view>
     <!-- 导航栏 -->
     <view class="navbar-box">
-        <view wx:for="{{navBarData}}" class="navber-item" wx:key="{{item.title}}" >
+        <view wx:for="{{navBarData}}" class="navber-item" wx:key="index" >
             <image src="{{item.img}}"></image>
             <text>{{item.title}}</text>
         </view>
@@ -24,7 +24,7 @@
             <text class="more">歌单广场</text>
         </view>
         <view class="recommand-content">
-            <view class="case" wx:for="{{recommandData}}" wx:key="{{item.title}}">
+            <view class="case" wx:for="{{recommandData}}" wx:key="index">
                 <image src="{{item.img}}" lazy-load="true"></image>
                 <text>{{item.title}}</text>
                 <view class="content">{{item.content}}</view>
@@ -45,7 +45,7 @@
             <view class="songer">{{playData.songer}}</view>
         </view>
         <view class="play-operation">
-            <view wx:for="{{playOperation}}" wx:key="{{item.title}}" class="{{item.className}}" bindtap="playTap" data-title="{{item.title}}">
+            <view wx:for="{{playOperation}}" wx:key="index" class="{{item.className}}" bindtap="playTap" data-title="{{item.title}}">
                 <i class="{{item.iconName}}" />
             </view>
         </view>

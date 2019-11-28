@@ -63,29 +63,22 @@
 			"list": [
 				{
 					"id": -1,
-					"name": "layout/classify/classify",
-					"pathName": "layout/classify/classify",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "layout/video/video",
-					"pathName": "layout/video/video",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "layout/personal/personal",
-					"pathName": "layout/personal/personal",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "pages/login/login",
 					"pathName": "pages/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "layout/index/index",
+					"pathName": "layout/index/index",
 					"query": "",
 					"scene": null
 				}
