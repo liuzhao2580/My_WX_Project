@@ -1,4 +1,18 @@
 <!--pages/login/login.wxml-->
-<view class="login-box" wx:if="{{is_login}}">
-    <button open-type="getUserInfo" bindgetuserinfo="getuserinfo">获取用户信息</button>
+<view class="login-box">
+    <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+    <mp-form id="form" rules="{{rules}}" models="{{formData}}" wx:if="{{needLogin}}">
+        <mp-cells title="登录">
+            <mp-cell prop="username" title="用户名">
+                <input class="weui-input" bindinput="formInputChange" data-field="username" placeholder="请输入用户名" />
+            </mp-cell>
+            <mp-cell prop="password" title="密码">
+                <input class="weui-input" bindinput="formInputChange" data-field="password" placeholder="请输入密码" />
+            </mp-cell>
+        </mp-cells>
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="submitForm">登录</button>
+        </view>
+    </mp-form>
+    <button open-type="getUserInfo" bindgetuserinfo="getuserinfo" class="login-btn" wx:if="{{!needLogin}}">获取用户信息</button>
 </view>

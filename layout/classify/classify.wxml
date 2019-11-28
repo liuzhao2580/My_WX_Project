@@ -3,7 +3,7 @@
     <!-- 左边的盒子 -->
     <view class="classify-left">
         <scroll-view scroll-y="true" class="left-scroll" scroll-with-animation="true">
-            <block wx:for="{{classifyData}}" wx:key="{{index}}">
+            <block wx:for="{{classifyData}}" wx:key="index">
                 <view class="{{index == currentClassify ? 'classify-detail classify-active' : 'classify-detail'}}" bindtap="classifyTab" data-currentitem="{{[index,item.classifyName]}}">
                     <text>{{item.classifyName}}</text>
                 </view>

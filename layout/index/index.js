@@ -173,24 +173,42 @@ Page({
      */
     
     onLoad: function (options) {
-        app.userInfoReadyCallback = res => {
-            console.log(res)
-            this.setData({
-                is_login: true
-            })
-        }
+        const that = this
+        // 用户授权信息
+        wx.getSetting({
+            success(res) {
+                const flag = res.authSetting['scope.userInfo']
+                if (flag){
+                    that.setData({
+                        is_login: true
+                    })
+                } 
+                // 说明用户没有授权 调整登录页面进行授权
+                else {
+                    that.setData({
+                        is_login: false
+                    })
+                    wx.navigateTo({
+                        url: '/pages/login/login?needLogin=0'
+                    })
+                }
+            }
+        })
+        // 用户基本信息
         const userInfo = app.globalData.userInfo
-        console.log(userInfo)
         if (userInfo) {
             this.setData({
                 is_login: true
             })
         }
         else {
-            wx.reLaunch({
-                url: '/pages/login/login'
-            })
+            app.userInfoReadyCallback = res => {
+                this.setData({
+                    is_login: true
+                })
+            }
         }
+        
     },
     
     /**
@@ -206,8 +224,17 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        
-        
+        const that = this
+        wx.getSetting({
+            success(res) {
+                const flag = res.authSetting['scope.userInfo']
+                if (flag) {
+                    that.setData({
+                        is_login: true
+                    })
+                }
+            }
+        })
         InnerAudioContext.src = "http://m701.music.126.net/20191031184559/e6a59121c6cd1b14131149292baecde3/jdyyaac/025f/5359/035d/552d1d7661d35be4bc9b473d5e074729.m4a"
     },
 
