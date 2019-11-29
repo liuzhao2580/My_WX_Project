@@ -1,5 +1,5 @@
 const app = getApp()
-const userInfo = app.globalData.userInfo
-export default {
-    userInfo
+export const is_login = () => {
+    return wx.getStorageSync("is_login") ? wx.getStorageSync("is_login") : app.globalData.is_login
+    
 }

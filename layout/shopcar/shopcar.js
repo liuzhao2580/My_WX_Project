@@ -1,4 +1,5 @@
 // layout/shopcar/shopcar.js
+import { is_login } from "../../utils/userInfo"
 Page({
 
     /**
@@ -32,7 +33,15 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        // 获取 用户是否已经登录
+        const getIs_Login = is_login()
+        console.log(getIs_Login)
+        // 如果用户没有登录 跳转到登录页面
+        if (!getIs_Login) {
+            wx.navigateTo({
+                url: '/pages/login/login?needLogin=1'
+            })
+        }
     },
 
     /**

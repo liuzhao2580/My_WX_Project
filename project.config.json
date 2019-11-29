@@ -83,6 +83,12 @@
 					"pathName": "layout/index/index",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "layout/shopcar/shopcar",
+					"pathName": "layout/shopcar/shopcar",
+					"scene": null
 				}
 			]
 		}

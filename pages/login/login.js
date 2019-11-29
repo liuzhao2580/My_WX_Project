@@ -26,9 +26,19 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        const getNeed = options.needLogin
         // 传递过来的 needLogin 为 0 说明不需要登录 需要授权
         // 传递过来的 needLogin 为 1 说明需要登录 不需要授权
-        console.log(options.needLogin)
+        if (getNeed == '1') {
+            this.setData({
+                needLogin: 1
+            })
+        } 
+        else if (getNeed == '0'){
+            this.setData({
+                needLogin: 0
+            })
+        }
     },
 
     /**
@@ -37,7 +47,7 @@ Page({
     onReady: function () {
         
     },
-    // 用户登录
+    // 用户授权
     getuserinfo(e) {
         console.log(e)
         const errMsg = e.detail.errMsg
@@ -54,6 +64,7 @@ Page({
             [`formData.${field}`]: e.detail.value
         })
     },
+    // 用户登录
     submitForm() {
         this.selectComponent('#form').validate((valid, errors) => {
             if (!valid) {
@@ -67,7 +78,10 @@ Page({
                 wx.showToast({
                     title: '校验通过'
                 })
-                app.globalData.is_login = true
+                wx.setStorageSync("is_login", true)
+                wx.navigateBack({
+                    delta: 1
+                })
             }
         })
     },
